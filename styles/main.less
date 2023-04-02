@@ -1,0 +1,141 @@
+@largerFont: 1.2em;
+@margin: 20px;
+
+body {
+  background: lightyellow;
+}
+
+.container {
+  margin: 20px;
+}
+
+.row {
+  padding: 0;
+  margin-right: -50px;
+}
+
+.col-md-8 {
+  margin-top: 20px;
+  float: right;
+  padding-left: 60px;
+}
+
+nav {
+  a {
+    font-family: monospace;
+    font-size: @largerFont;
+  }
+}
+
+.accordion {
+
+  button {
+    span {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  }
+
+  .accordion-body {
+    a {
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.upper {
+  vertical-align: top;
+
+  * {
+    display: inline;
+  }
+
+  h4 {
+    padding-left: 50px;
+  }
+}
+
+.itemInfo {
+  ul {
+    padding-top: @margin;
+    padding-bottom: @margin;
+  }
+
+  li {
+    font-size: 1.5em;
+  }
+
+  a {
+    margin: 10px;
+  }
+
+  button {
+    margin: 10px;
+  }
+}
+
+.p-5 {
+  background: lavender;
+}
+
+
+#accordionExample {
+  position: fixed;
+  width:30%;
+  .accordion-item {
+    background: lavender;
+  }
+}
+
+#personalInfo {
+  position: fixed;
+  width: 30%;
+  background: lavender;
+  text-align: center;
+
+  img {
+    padding: 5px 20px;
+  }
+
+  table {
+    table-layout: fixed;
+    text-align: left;
+
+    tr {
+      word-wrap: break-word;
+      max-width: 10px;
+    }
+
+    td {
+      border-bottom: none;
+      word-wrap: break-word;
+      max-width: 10px;
+    }
+  }
+}
+
+h1 {
+  padding: 20px;
+}
+
+//responsive
+@media only screen and (max-width: 768px) {
+  .col-md-8 {
+    width: 100%;
+  }
+
+  .col-md-4 {
+    width: 100%;
+  }
+
+  #accordionExample {
+    position: relative;
+    width: 100%;
+  }
+
+  #personalInfo {
+    position: relative;
+    width: 100%;
+  }
+}

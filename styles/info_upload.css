@@ -1,0 +1,88 @@
+section.container {
+
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+footer.container{
+    margin: 10px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+header.container{
+    margin: 10px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+small.copyright{
+    float: left;
+    color: red;
+}
+
+.primary-footer {
+    width: 100%;
+    margin-bottom: 25px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+label {
+    vertical-align: top;
+}
+
+body {
+    background-image: url('../images/uva.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+nav a{
+    font-family: monospace;
+    font-size: 1.2em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones and tablets: */
+    .col-12 {
+        width: 100%;
+
+    }
+    .col-8 {
+        width: 100%;
+        background: lightyellow;
+    }
+
+    .col-4 {
+        width: 100%;
+        background: lightyellow;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .row{
+        width: 100%;
+
+    }
+    .col-12 {
+        width: 100%;
+
+    }
+    .col-8 {
+        width: 66.66%;
+        background: lightyellow;
+    }
+
+    .col-4 {
+        width: 33.33%;
+        background: lavender;
+    }
+}
+
+/*by xs9qpu Xiyuan Song*/
