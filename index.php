@@ -1,24 +1,16 @@
 <?php
+    require("connect-db.php");
 
-session_start();
+    session_start();
+    if(isset($_SESSION["userID"]) && isset($_SESSION["email"]) && isset($_SESSION["name"])) {
+        echo "logged in as " . $_SESSION["name"]. " userID: " . $_SESSION["userID"]
+        . " email: ". $_SESSION["email"];
+    } else {
+        echo "You have not logged in";
+    }
+?>
 
-// Register the autoloader
-spl_autoload_register(function($classname) {
-    include "classes/$classname.php";
-});
-
-$command = "login";
-
-if (isset($_GET["command"]))
-    $command = $_GET["command"];
-
-// add after login
-if (!isset($_SESSION["email"])) {
-   // they need to see the login
-   // go to mainpage before setting login page
-   $command = "login";
-}
-
-// Instantiate the controller and run
-$connect = new connectController($command);
-$connect->run();
+<br>
+<a href="login.php"> go to login </a>
+<br>
+<a href="signup.php"> go to sign up </a>

@@ -44,6 +44,9 @@ nav a {
 .itemInfo a {
   margin: 10px;
 }
+.itemInfo button {
+  margin: 10px;
+}
 .p-5 {
   background: lavender;
 }
