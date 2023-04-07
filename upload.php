@@ -26,7 +26,7 @@ function addUsedItem($item_type, $brand, $used_time){
     try{
         $stmt = $db->prepare("INSERT INTO Used_item_post (id, item_type, brand, used_time) VALUES (:id, :item_type, :brand, :used_time)");
         $id = $db->lastInsertId();
-        print($id);
+        //print($id);
         $stmt -> bindParam(':id', $id);
         $stmt -> bindParam('item_type', $item_type);
         $stmt -> bindParam('brand', $brand);
@@ -36,15 +36,45 @@ function addUsedItem($item_type, $brand, $used_time){
     }catch (PDOException $e){
         echo $e->getMessage();
     }
-//    $stmt = $db->prepare("INSERT INTO Used_item_post (id, item_type, brand, used_time) VALUES (:id, :item_type, :brand, :used_time)");
-//    $id = $db->lastInsertId();
-//    print($id);
-//    $stmt -> bindParam(':id', $id);
-//    $stmt -> bindParam('item_type', $item_type);
-//    $stmt -> bindParam('brand', $brand);
-//    $stmt -> bindParam('used_item', $used_time);
-//    $stmt -> execute();
-//    $stmt -> closeCursor();
+}
+
+function addRental($rental_type, $location, $start_date, $end_date){
+    global $db;
+    try{
+        $stmt = $db->prepare("INSERT INTO House_rental_post (id, rental_type, location, start_date, end_date) VALUES (:id, :rental_type, :location, :start_date, :end_date)");
+        $id = $db->lastInsertId();
+        $stmt -> bindParam(':id', $id);
+        $stmt -> bindParam('rental_type', $rental_type);
+        $stmt -> bindParam('location', $location);
+        $stmt -> bindParam('start_date', $start_date);
+        $stmt -> bindParam('end_date', $end_date);
+        $stmt -> execute();
+        $stmt -> closeCursor();
+    }catch (PDOException $e){
+        echo $e->getMessage();
+    }
+
+}
+
+function addCarpooling($start_location, $destination, $car_color, $car_model, $car_license, $driver){
+    global $db;
+    try{
+        $stmt = $db->prepare("INSERT INTO Carpooling_post(id, start_location, destination, car_color, car_model, car_license, driver) VALUES (:id, :start_location, :destination, :car_color, :car_model, :car_license, :driver)" );
+        $id = $db->lastInsertId();
+        $stmt -> bindParam(':id', $id);
+        $stmt -> bindParam('start_location', $start_location);
+        $stmt -> bindParam('destination', $destination);
+        $stmt -> bindParam('car_color', $car_color);
+        $stmt -> bindParam('car_model', $car_model);
+        $stmt -> bindParam('car_license', $car_license);
+        $stmt -> bindParam('driver', $driver);
+        $stmt -> execute();
+        $stmt -> closeCursor();
+    }catch (PDOException $e){
+        echo $e->getMessage();
+    }
+
+
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -59,7 +89,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $item_type = $_POST["itemType"];
             $brand = $_POST["brand"];
             $used_time = $_POST["usedTime"];
+            print("excuted used item");
             addUsedItem($item_type, $brand,$used_time);
+        }
+        if(isset($_POST["rental_type"])&&isset($_POST["location"])&&isset($_POST["start_date"])&&isset($_POST["end_date"])){
+            print("excuted rental");
+            addRental($_POST["rental_type"], $_POST["location"],$_POST["start_date"],$_POST["end_date"]);
+        }
+        if(isset($_POST["start_location"])&&isset($_POST["destination"])&&isset($_POST["car_color"])&&isset($_POST["car_model"])&&isset($_POST["car_license"])&&isset($_POST["driver"])){
+            print("excuted carpooling");
+            addCarpooling($_POST["start_location"], $_POST["destination"],$_POST["car_color"], $_POST["car_model"],$_POST["car_license"], $_POST["driver"]);
         }
     }
 }
@@ -83,7 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only"></span></a>
+                <a class="nav-link" href="index.php">Home <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Used Item</a>
@@ -272,19 +311,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             additionalFieldsDiv.innerHTML = `
                                 <div class="form-group">
                                   <label for="rental_type">Rental Type</label>
-                                  <input type="text" class="form-control" id="rental_type" placeholder="Enter rental type">
+                                  <input type="text" class="form-control" name="rental_type" placeholder="Enter rental type">
                                 </div>
                                 <div class="form-group">
                                   <label for="location">Location</label>
-                                  <input type="text" class="form-control" id="location" placeholder="Enter location">
+                                  <input type="text" class="form-control" name="location" placeholder="Enter location">
                                 </div>
                                 <div class="form-group">
                                   <label for="start_date">Start Date</label>
-                                  <input type="text" class="form-control" id="start_date" placeholder="Enter starting date">
+                                  <input type="text" class="form-control" name="start_date" placeholder="Enter starting date">
                                 </div>
                                 <div class="form-group">
                                   <label for="end_date">End Date</label>
-                                  <input type="text" class="form-control" id="end_date" placeholder="Enter ending date">
+                                  <input type="text" class="form-control" name="end_date" placeholder="Enter ending date">
                                 </div>
 
                               `;
@@ -292,27 +331,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             additionalFieldsDiv.innerHTML = `
                                 <div class="form-group">
                                   <label for="start_location">Start Location</label>
-                                  <input type="text" class="form-control" id="start_location" placeholder="Enter start location">
+                                  <input type="text" class="form-control" name="start_location" placeholder="Enter start location">
                                 </div>
                                 <div class="form-group">
                                   <label for="destination">Destination</label>
-                                  <input type="text" class="form-control" id="destination" placeholder="Enter destination">
+                                  <input type="text" class="form-control" name="destination" placeholder="Enter destination">
                                 </div>
                                 <div class="form-group">
                                   <label for="car_color">Car Color</label>
-                                  <input type="text" class="form-control" id="car_color" placeholder="Enter car color">
+                                  <input type="text" class="form-control" name="car_color" placeholder="Enter car color">
                                 </div>
                                 <div class="form-group">
                                   <label for="car_model">Car Model</label>
-                                  <input type="text" class="form-control" id="car_model" placeholder="Enter car model">
+                                  <input type="text" class="form-control" name="car_model" placeholder="Enter car model">
                                 </div>
                                 <div class="form-group">
                                   <label for="car_license">Car License</label>
-                                  <input type="text" class="form-control" id="car_license" placeholder="Enter car license">
+                                  <input type="text" class="form-control" name="car_license" placeholder="Enter car license">
                                 </div>
                                 <div class="form-group">
                                   <label for="driver">Driver</label>
-                                  <input type="text" class="form-control" id="driver=" placeholder="Enter driver">
+                                  <input type="text" class="form-control" name="driver" placeholder="Enter driver">
                                 </div>
 
                               `;
