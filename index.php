@@ -14,3 +14,5 @@
 <a href="login.php"> go to login </a>
 <br>
 <a href="signup.php"> go to sign up </a>
+<br>
+<a href="upload.php"> go to upload </a>

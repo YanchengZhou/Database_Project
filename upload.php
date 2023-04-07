@@ -1,25 +1,67 @@
 <?php
 require('connect-db.php');
 
-function addPost($name, $post_time, $price, $state,$note):void
+session_start();
+
+function addPost($name, $post_time, $price, $state,$notes)
 {
     global $db;
-    $stmt = $db->prepare("INSERT INTO Posts (name, post_time, price, state, note) VALUES (:name, :post_time, :price, :state, :note)");
-//    $stmt->bindParam(':name', $name);
-//    $stmt->bindParam(':major', $major);
-//    $stmt->bindParam(':year', $year);
+    $userID = $_SESSION["userID"];
+    $stmt = $db->prepare("INSERT INTO Posts (name, post_time, price, state, notes, userID) VALUES (:name, :post_time, :price, :state, :notes, :userID)");
     $stmt->bindParam(':name', $name);
     $stmt->bindParam(':post_time', $post_time);
     $stmt->bindParam(':price', $price);
     $stmt->bindParam(':state', $state);
-    $stmt->bindParam('note', $note);
+    $stmt->bindParam('notes', $notes);
+    $stmt->bindParam('userID', $userID);
     $stmt->execute();
     $stmt->closeCursor();
 
+
+}
+
+function addUsedItem($item_type, $brand, $used_time){
+    global $db;
+    //$id = $db->lastInsertId();
+    try{
+        $stmt = $db->prepare("INSERT INTO Used_item_post (id, item_type, brand, used_time) VALUES (:id, :item_type, :brand, :used_time)");
+        $id = $db->lastInsertId();
+        print($id);
+        $stmt -> bindParam(':id', $id);
+        $stmt -> bindParam('item_type', $item_type);
+        $stmt -> bindParam('brand', $brand);
+        $stmt -> bindParam('used_time', $used_time);
+        $stmt -> execute();
+        $stmt -> closeCursor();
+    }catch (PDOException $e){
+        echo $e->getMessage();
+    }
+//    $stmt = $db->prepare("INSERT INTO Used_item_post (id, item_type, brand, used_time) VALUES (:id, :item_type, :brand, :used_time)");
+//    $id = $db->lastInsertId();
+//    print($id);
+//    $stmt -> bindParam(':id', $id);
+//    $stmt -> bindParam('item_type', $item_type);
+//    $stmt -> bindParam('brand', $brand);
+//    $stmt -> bindParam('used_item', $used_time);
+//    $stmt -> execute();
+//    $stmt -> closeCursor();
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    if(isset($_POST["name"])&&isset($_POST["time"])&&isset($_POST["price"])&&isset($_POST["state"])&&isset($_POST["note"])){
+        $name = $_POST["name"];
+        $time = $_POST["time"];
+        $price = $_POST["price"];
+        $state = $_POST["state"];
+        $note = $_POST["note"];
+        addPost($name, $time, $price, $state, $note);
+        if(isset($_POST["itemType"])&&isset($_POST["brand"])&&isset($_POST["usedTime"])){
+            $item_type = $_POST["itemType"];
+            $brand = $_POST["brand"];
+            $used_time = $_POST["usedTime"];
+            addUsedItem($item_type, $brand,$used_time);
+        }
+    }
 }
 ?>
 
@@ -76,28 +118,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h4>Upload Info</h4>
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    <input type="text" class="form-control" name="name" placeholder="Enter name">
                 </div>
                 <div class="form-group">
                     <label for="time">Time</label>
-                    <input type="text" class="form-control" id="time" placeholder="Enter time">
+                    <input type="text" class="form-control" name="time" placeholder="Enter time">
                 </div>
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" class="form-control" id="price" placeholder="Enter price">
+                    <input type="text" class="form-control" name="price" placeholder="Enter price">
                 </div>
                 <div class="form-group">
                     <label for="state">State</label>
-                    <input type="text" class="form-control" id="state" placeholder="Enter state">
+                    <input type="text" class="form-control" name="state" placeholder="Enter state">
                 </div>
                 <div class="form-group">
                     <label for="note">Note</label>
-                    <input type="text" class="form-control" id="note" placeholder="Enter note">
+                    <input type="text" class="form-control" name="note" placeholder="Enter note">
                 </div>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <form>
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div class="col-md-6">-->
+<!--            <form>-->
                 <h4>Upload Image</h4>
                 <div class="form-group">
                     <label for="image">Image</label>
@@ -215,15 +257,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             additionalFieldsDiv.innerHTML = `
                                 <div class="form-group">
                                   <label for="itemType">Item Type</label>
-                                  <input type="text" class="form-control" id="itemType" placeholder="Enter item type">
+                                  <input type="text" class="form-control" name="itemType" placeholder="Enter item type">
                                 </div>
                                 <div class="form-group">
                                   <label for="brand">Brand</label>
-                                  <input type="text" class="form-control" id="brand" placeholder="Enter brand">
+                                  <input type="text" class="form-control" name="brand" placeholder="Enter brand">
                                 </div>
                                 <div class="form-group">
                                   <label for="usedTime">Used Time</label>
-                                  <input type="text" class="form-control" id="usedTime" placeholder="Enter used time">
+                                  <input type="text" class="form-control" name="usedTime" placeholder="Enter used time">
                                 </div>
                               `;
                         }else if(event.target.value === "House Rental"){
@@ -279,10 +321,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                     });
                 </script>
-
+                <input type="submit" class="btn btn-primary" name= "Submit" value="Submit">
             </form>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <button type="submit" class="btn btn-primary">Reset</button>
+<!--            <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--            <button type="submit" class="btn btn-primary">Reset</button>-->
         </div>
 
     </div>
