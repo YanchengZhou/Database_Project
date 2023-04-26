@@ -127,27 +127,30 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
     ?>
     <!-- Your existing code to display all items goes here -->
     <h1>Used Item Posts</h1>
-    <?php while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) { ?>
-        <div class="card" style="width: 18rem;">
-            <img src="placeholder.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title"><?php echo $row['name']; ?></h5>
-                <p>Post Time: <?php echo $row['post_time']; ?></p>
-                <p>Price: <?php echo $row['price']; ?></p>
-                <p>State: <?php echo $row['state']; ?></p>
-                <p>Notes: <?php echo $row['notes']; ?></p>
-                <p>UserID: <?php echo $row['userID']; ?></p>
-                <p>Item Type: <?php echo $row['item_type']; ?></p>
-                <p>Brand: <?php echo $row['brand']; ?></p>
-                <p>Used Time: <?php echo $row['used_time']; ?></p>
-                <a href="#" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
+    <div style="display: flex; flex-wrap: wrap;">
+        <?php while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) { ?>
+            <div class="card" style="width: 18rem; margin: 10px;">
+                <img src="placeholder.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                    <p>Post Time: <?php echo $row['post_time']; ?></p>
+                    <p>Price: <?php echo $row['price']; ?></p>
+                    <p>State: <?php echo $row['state']; ?></p>
+                    <p>Notes: <?php echo $row['notes']; ?></p>
+                    <p>UserID: <?php echo $row['userID']; ?></p>
+                    <p>Item Type: <?php echo $row['item_type']; ?></p>
+                    <p>Brand: <?php echo $row['brand']; ?></p>
+                    <p>Used Time: <?php echo $row['used_time']; ?></p>
+                    <a href="#" class="btn btn-primary">view more</a>
+                    <a href="#" class="btn btn-primary">Add to Collection</a>
+                </div>
             </div>
-        </div>
-    <?php } ?>
+        <?php } ?>
+    </div>
 
 
     <h1>House Rental Posts</h1>
+    <div style="display: flex; flex-wrap: wrap;">
     <?php while($row = $house_rentals_result->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="card" style="width: 18rem;">
             <img src="placeholder.jpg" class="card-img-top" alt="...">
@@ -167,9 +170,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
             </div>
         </div>
     <?php } ?>
+    </div>
 
 
     <h1>Carpooling Posts</h1>
+    <div style="display: flex; flex-wrap: wrap;">
     <?php while($row = $carpooling_result->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="card" style="width: 18rem;">
             <img src="placeholder.jpg" class="card-img-top" alt="...">
@@ -191,6 +196,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
             </div>
         </div>
     <?php } ?>
+    </div>
     <?php
 }
 ?>

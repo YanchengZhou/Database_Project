@@ -1,32 +1,39 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#" ><b>&nbsp;UVassistance</b></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.php">Home <span class="sr-only"></span></a>
+            <li class="nav-item nav-item_dec nav-item-custom active">
+                <a class="nav-link " href="index.php">  <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>  <span class="sr-only"></span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="usedItem.php">Used Item</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="#">House Rental</a>
+            <li class="nav-item nav-item_dec active">
+                <a class="nav-link" href="usedItem.php"><b>&nbsp;&nbsp;&nbsp;&nbsp;Used Item&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Carpooling</a>
+
+            <li class="nav-item nav-item_dec active">
+                <a class="nav-link" href="houseRental.php"><b>&nbsp;House Rental&nbsp;</b></a>
+            </li>
+
+            <li class="nav-item nav-item_dec active">
+                <a class="nav-link" href="carpooling.php"><b>&nbsp;&nbsp;Carpooling&nbsp;&nbsp;</b></a>
+
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="account.php">Account</a>
+            <li class="nav-item nav-item_dec active">
+                <a class="nav-link" href="#"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">Collection</a>
+            <li class="nav-item nav-item_dec active">
+                <a class="nav-link" href="#"><b>&nbsp;&nbsp;&nbsp;&nbsp;Collection&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
         </ul>
 
