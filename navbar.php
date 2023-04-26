@@ -16,12 +16,14 @@
                 <a class="nav-link" href="usedItem.php"><b>&nbsp;&nbsp;&nbsp;&nbsp;Used Item&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
 
-            <li class="nav-item nav-item_dec nav-item-custom">
-                <a class="nav-link" href="#"><b>&nbsp;House Rental&nbsp;</b></a>
+
+            <li class="nav-item">
+                <a class="nav-link" href="houseRental.php">House Rental</a>
             </li>
 
-            <li class="nav-item nav-item_dec nav-item-custom">
-                <a class="nav-link" href="#"><b>&nbsp;&nbsp;&nbsp;Carpooling&nbsp;&nbsp;&nbsp;</b></a>
+            <li class="nav-item">
+                <a class="nav-link" href="carpooling.php">Carpooling</a>
+
             </li>
 
             <li class="nav-item nav-item_dec nav-item-custom">
