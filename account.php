@@ -68,7 +68,6 @@
     </style>
 </head>
 <body>
-<?php include 'navbar.php'; ?>
 
 <div class="container">
     <div class="row" style="padding-top:2%">
