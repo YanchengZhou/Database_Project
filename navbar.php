@@ -26,10 +26,8 @@
 
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="account.php">Account</a>
             <li class="nav-item nav-item_dec active">
-                <a class="nav-link" href="#"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
+                <a class="nav-link" href="account.php"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
 
             <li class="nav-item nav-item_dec active">
