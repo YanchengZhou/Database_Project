@@ -32,6 +32,7 @@ $house_rentals_result = $db->query($house_rentals_sql);
     <button type="submit">Search</button>
 </form>
 
+<div style="display: flex; flex-wrap: wrap;">
 <?php
 // Check if a search query has been submitted
 if (isset($_GET['query']) && !empty($_GET['query'])) {
@@ -43,6 +44,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
     $result2 = $db->query($sql2);
     while ($row = $result2->fetch(PDO::FETCH_ASSOC)) {
         // Display the item using the same HTML structure as before?>
+
         <div class="card" style="width: 18rem;">
             <img src="placeholder.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -60,9 +62,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
+
     <?php }
 }else{?>
     <?php while($row = $house_rentals_result->fetch(PDO::FETCH_ASSOC)) { ?>
+
         <div class="card" style="width: 18rem;">
             <img src="placeholder.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -80,8 +84,10 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
+
     <?php } ?>
 <?php } ?>
 
+</div>
 </body>
 </html>

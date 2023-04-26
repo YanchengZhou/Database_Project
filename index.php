@@ -62,6 +62,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
         while ($row = $result1->fetch(PDO::FETCH_ASSOC)) {
             // Display the item using the same HTML structure as before
             ?>
+        <div style="display: flex; flex-wrap: wrap;">
             <div class="card" style="width: 18rem;">
                 <img src="placeholder.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -78,8 +79,10 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                     <a href="#" class="btn btn-primary">Add to Collection</a>
                 </div>
             </div>
+        </div>
             <h1>House Rental Posts</h1>
             <?php while($row = $result2->fetch(PDO::FETCH_ASSOC)) { ?>
+            <div style="display: flex; flex-wrap: wrap;">
                 <div class="card" style="width: 18rem;">
                     <img src="placeholder.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -97,9 +100,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <a href="#" class="btn btn-primary">Add to Collection</a>
                     </div>
                 </div>
+            </div>
             <?php } ?>
             <h1>Carpooling Posts</h1>
             <?php while($row = $result3->fetch(PDO::FETCH_ASSOC)) { ?>
+            <div style="display: flex; flex-wrap: wrap;">
                 <div class="card" style="width: 18rem;">
                     <img src="placeholder.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -119,6 +124,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <a href="#" class="btn btn-primary">Add to Collection</a>
                     </div>
                 </div>
+            </div>
             <?php } ?>
         <?php
     }
