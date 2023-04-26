@@ -3,6 +3,7 @@
     global $db;
 
     session_start();
+    include("navbar.php");
     if(isset($_SESSION["userID"]) && isset($_SESSION["email"]) && isset($_SESSION["name"])) {
         echo "logged in as " . $_SESSION["name"]. " userID: " . $_SESSION["userID"]
             . " email: ". $_SESSION["email"];
@@ -45,6 +46,8 @@
 
     } else {
         echo "<h1>Please log in first to see your information</h1>";
+        echo "<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>";
+        exit();
     }
 
 ?>
@@ -52,8 +55,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+
     <title>User Information</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         .fontStyle {
             font-size:25px;
@@ -129,6 +133,8 @@
         </div>
     </div>
 </div>
+
+<br> <br> <br>
 
 </body>
 </html>

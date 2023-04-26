@@ -14,6 +14,31 @@ if(isset($_SESSION["userID"]) && isset($_SESSION["email"]) && isset($_SESSION["n
 $carpooling_sql = "select * from Posts natural join Carpooling_post";
 $carpooling_result = $db->query($carpooling_sql);
 
+function makeAlert($message) {
+    echo "<script>
+                        alert('$message')
+              </script>";
+}
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if(!empty($_POST['collectionbutton']) && ($_POST['collectionbutton'] == "collection")) {
+        if(isset($_SESSION["userID"]) && isset($_SESSION["email"]) && isset($_SESSION["name"])) {
+            $collection_id = $_POST['collection_item'];
+            $userId = $_SESSION["userID"];
+            $query = "INSERT INTO Collection (userID, postID) VALUES (:userId, :postId)";
+            $statement = $db->prepare($query);
+            $statement->bindValue(':userId', $userId);
+            $statement->bindValue(':postId', $collection_id);
+            $statement->execute();
+            makeAlert("Add to collection succesfully");
+        }
+        else {
+            makeAlert("Please log in to add collections");
+        }
+
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -58,8 +83,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Model: <?php echo $row['car_model']; ?></p>
                 <p>License: <?php echo $row['car_license']; ?></p>
                 <p>Driver: <?php echo $row['driver']; ?></p>
-                <a href="#" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
+                <form method="post">
+                    <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                    <a href="#" class="btn btn-primary">view more</a>
+                    <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                </form>
             </div>
         </div>
     <?php }
@@ -80,8 +108,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Model: <?php echo $row['car_model']; ?></p>
                 <p>License: <?php echo $row['car_license']; ?></p>
                 <p>Driver: <?php echo $row['driver']; ?></p>
-                <a href="#" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
+                <form method="post">
+                    <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                    <a href="#" class="btn btn-primary">view more</a>
+                    <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                </form>
             </div>
         </div>
     <?php } ?>
