@@ -72,170 +72,160 @@
     </li>
 </nav>
 
-<form class="form-inline my-2 my-lg-0">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+<form action="index.php" method="get">
+    <input type="text" name="query" placeholder="Search...">
+    <button type="submit">Search</button>
 </form>
 
-<h1>Used Item Posts</h1>
-<?php while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) { ?>
-<div class="card" style="width: 18rem;">
-    <img src="placeholder.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title"><?php echo $row['name']; ?></h5>
-        <p>Post Time: <?php echo $row['post_time']; ?></p>
-        <p>Price: <?php echo $row['price']; ?></p>
-        <p>State: <?php echo $row['state']; ?></p>
-        <p>Notes: <?php echo $row['notes']; ?></p>
-        <p>UserID: <?php echo $row['userID']; ?></p>
-        <p>Item Type: <?php echo $row['item_type']; ?></p>
-        <p>Brand: <?php echo $row['brand']; ?></p>
-        <p>Used Time: <?php echo $row['used_time']; ?></p>
-        <a href="#" class="btn btn-primary">view more</a>
-    </div>
-</div>
-<?php } ?>
-<!--<div class="item-cards">-->
-<!--    --><?php //while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) { ?>
-<!--        <div class="item-card">-->
-<!--            <h2>--><?php //echo $row['name']; ?><!--</h2>-->
-<!--            <p>Post Time: --><?php //echo $row['post_time']; ?><!--</p>-->
-<!--            <p>Price: --><?php //echo $row['price']; ?><!--</p>-->
-<!--            <p>State: --><?php //echo $row['state']; ?><!--</p>-->
-<!--            <p>Notes: --><?php //echo $row['notes']; ?><!--</p>-->
-<!--            <p>UserID: --><?php //echo $row['userID']; ?><!--</p>-->
-<!--            <p>Item Type: --><?php //echo $row['item_type']; ?><!--</p>-->
-<!--            <p>Brand: --><?php //echo $row['brand']; ?><!--</p>-->
-<!--            <p>Used Time: --><?php //echo $row['used_time']; ?><!--</p>-->
-<!--        </div>-->
-<!--    --><?php //} ?>
-<!--</div>-->
-<!--<table border="1">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>ID</th>-->
-<!--        <th>Name</th>-->
-<!--        <th>Post Time</th>-->
-<!--        <th>Price</th>-->
-<!--        <th>State</th>-->
-<!--        <th>Notes</th>-->
-<!--        <th>UserID</th>-->
-<!--        <th>Item Type</th>-->
-<!--        <th>Brand</th>-->
-<!--        <th>Used Time</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    --><?php //while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) {
-//        echo "<tr>";
-//        foreach ($row as $value) {
-//            echo "<td> $value </td>";
-//        }
-//        echo "</tr>";
-//    }
-//    ?>
-<!--    </tbody>-->
-<!--</table>-->
+<?php
+// Check if a search query has been submitted
+if (isset($_GET['query']) && !empty($_GET['query'])) {
+    // Get the user's search query
+    $query = $_GET['query'];
 
-
-<h1>House Rental Posts</h1>
-<?php while($row = $house_rentals_result->fetch(PDO::FETCH_ASSOC)) { ?>
-<div class="card" style="width: 18rem;">
-    <img src="placeholder.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title"><?php echo $row['name']; ?></h5>
-        <p>Post Time: <?php echo $row['post_time']; ?></p>
-        <p>Price: <?php echo $row['price']; ?></p>
-        <p>State: <?php echo $row['state']; ?></p>
-        <p>Notes: <?php echo $row['notes']; ?></p>
-        <p>UserID: <?php echo $row['userID']; ?></p>
-        <p>Rental Type: <?php echo $row['rental_type']; ?></p>
-        <p>Location: <?php echo $row['location']; ?></p>
-        <p>Start Date: <?php echo $row['start_date']; ?></p>
-        <p>End Date: <?php echo $row['end_date']; ?></p>
-        <a href="#" class="btn btn-primary">view more</a>
-    </div>
-</div>
-<?php } ?>
-<!--<table border="1">-->
-<!--    <thead>-->
-<!--    <tr>-->
-<!--        <th>ID</th>-->
-<!--        <th>Name</th>-->
-<!--        <th>Post Time</th>-->
-<!--        <th>Price</th>-->
-<!--        <th>State</th>-->
-<!--        <th>Notes</th>-->
-<!--        <th>UserID</th>-->
-<!--        <th>Rental Type</th>-->
-<!--        <th>Location</th>-->
-<!--        <th>Start Date</th>-->
-<!--        <th>End Date</th>-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    --><?php //while($row = $house_rentals_result->fetch(PDO::FETCH_ASSOC)) {
-//        echo "<tr>";
-//        foreach ($row as $value) {
-//            echo "<td> $value </td>";
-//        }
-//        echo "</tr>";
-//    }
-//    ?>
-<!--    </tbody>-->
-<!--</table>-->
-
-
-<h1>Carpooling Posts</h1>
-<?php while($row = $carpooling_result->fetch(PDO::FETCH_ASSOC)) { ?>
-    <div class="card" style="width: 18rem;">
-        <img src="placeholder.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title"><?php echo $row['name']; ?></h5>
-            <p>Post Time: <?php echo $row['post_time']; ?></p>
-            <p>Price: <?php echo $row['price']; ?></p>
-            <p>State: <?php echo $row['state']; ?></p>
-            <p>Notes: <?php echo $row['notes']; ?></p>
-            <p>UserID: <?php echo $row['userID']; ?></p>
-            <p>Start Location: <?php echo $row['start_location']; ?></p>
-            <p>Destination: <?php echo $row['destination']; ?></p>
-            <p>Car Color: <?php echo $row['car_color']; ?></p>
-            <p>Model: <?php echo $row['car_model']; ?></p>
-            <p>License: <?php echo $row['car_license']; ?></p>
-            <p>Driver: <?php echo $row['driver']; ?></p>
-            <a href="#" class="btn btn-primary">view more</a>
-        </div>
-    </div>
-<?php } ?>
-<table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Post Time</th>
-        <th>Price</th>
-        <th>State</th>
-        <th>Notes</th>
-        <th>UserID</th>
-        <th>Start Location</th>
-        <th>Destination</th>
-        <th>Car Color</th>
-        <th>Car Model</th>
-        <th>Car License</th>
-        <th>Driver</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php while($row = $carpooling_result->fetch(PDO::FETCH_ASSOC)) {
-        echo "<tr>";
-        foreach ($row as $value) {
-            echo "<td> $value </td>";
-        }
-        echo "</tr>";
-    }
+    // Search the database for records with a name that matches the search query
+    $sql1 = "SELECT * FROM Posts NATURAL JOIN Used_item_post WHERE name LIKE '%$query%'";
+    $result1 = $db->query($sql1);
+    $sql2 = "SELECT * FROM Posts NATURAL JOIN House_rental_post WHERE name LIKE '%$query%'";
+    $result2 = $db->query($sql2);
+    $sql3 = "SELECT * FROM Posts NATURAL JOIN Carpooling_post WHERE name LIKE '%$query%'";
+    $result3 = $db->query($sql3);
     ?>
-    </tbody>
-</table>
+    <h1>Used Item Posts</h1>
+    <?php
+    // Display the search results
+        while ($row = $result1->fetch(PDO::FETCH_ASSOC)) {
+            // Display the item using the same HTML structure as before
+            ?>
+            <div class="card" style="width: 18rem;">
+                <img src="placeholder.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                    <p>Post Time: <?php echo $row['post_time']; ?></p>
+                    <p>Price: <?php echo $row['price']; ?></p>
+                    <p>State: <?php echo $row['state']; ?></p>
+                    <p>Notes: <?php echo $row['notes']; ?></p>
+                    <p>UserID: <?php echo $row['userID']; ?></p>
+                    <p>Item Type: <?php echo $row['item_type']; ?></p>
+                    <p>Brand: <?php echo $row['brand']; ?></p>
+                    <p>Used Time: <?php echo $row['used_time']; ?></p>
+                    <a href="#" class="btn btn-primary">view more</a>
+                </div>
+            </div>
+            <h1>House Rental Posts</h1>
+            <?php while($row = $result2->fetch(PDO::FETCH_ASSOC)) { ?>
+                <div class="card" style="width: 18rem;">
+                    <img src="placeholder.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                        <p>Post Time: <?php echo $row['post_time']; ?></p>
+                        <p>Price: <?php echo $row['price']; ?></p>
+                        <p>State: <?php echo $row['state']; ?></p>
+                        <p>Notes: <?php echo $row['notes']; ?></p>
+                        <p>UserID: <?php echo $row['userID']; ?></p>
+                        <p>Rental Type: <?php echo $row['rental_type']; ?></p>
+                        <p>Location: <?php echo $row['location']; ?></p>
+                        <p>Start Date: <?php echo $row['start_date']; ?></p>
+                        <p>End Date: <?php echo $row['end_date']; ?></p>
+                        <a href="#" class="btn btn-primary">view more</a>
+                    </div>
+                </div>
+            <?php } ?>
+            <h1>Carpooling Posts</h1>
+            <?php while($row = $result3->fetch(PDO::FETCH_ASSOC)) { ?>
+                <div class="card" style="width: 18rem;">
+                    <img src="placeholder.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                        <p>Post Time: <?php echo $row['post_time']; ?></p>
+                        <p>Price: <?php echo $row['price']; ?></p>
+                        <p>State: <?php echo $row['state']; ?></p>
+                        <p>Notes: <?php echo $row['notes']; ?></p>
+                        <p>UserID: <?php echo $row['userID']; ?></p>
+                        <p>Start Location: <?php echo $row['start_location']; ?></p>
+                        <p>Destination: <?php echo $row['destination']; ?></p>
+                        <p>Car Color: <?php echo $row['car_color']; ?></p>
+                        <p>Model: <?php echo $row['car_model']; ?></p>
+                        <p>License: <?php echo $row['car_license']; ?></p>
+                        <p>Driver: <?php echo $row['driver']; ?></p>
+                        <a href="#" class="btn btn-primary">view more</a>
+                    </div>
+                </div>
+            <?php } ?>
+        <?php
+    }
+} else {
+    // No search query has been submitted, so display all items as before
+    ?>
+    <!-- Your existing code to display all items goes here -->
+    <h1>Used Item Posts</h1>
+    <?php while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) { ?>
+        <div class="card" style="width: 18rem;">
+            <img src="placeholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                <p>Post Time: <?php echo $row['post_time']; ?></p>
+                <p>Price: <?php echo $row['price']; ?></p>
+                <p>State: <?php echo $row['state']; ?></p>
+                <p>Notes: <?php echo $row['notes']; ?></p>
+                <p>UserID: <?php echo $row['userID']; ?></p>
+                <p>Item Type: <?php echo $row['item_type']; ?></p>
+                <p>Brand: <?php echo $row['brand']; ?></p>
+                <p>Used Time: <?php echo $row['used_time']; ?></p>
+                <a href="#" class="btn btn-primary">view more</a>
+            </div>
+        </div>
+    <?php } ?>
+
+
+    <h1>House Rental Posts</h1>
+    <?php while($row = $house_rentals_result->fetch(PDO::FETCH_ASSOC)) { ?>
+        <div class="card" style="width: 18rem;">
+            <img src="placeholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                <p>Post Time: <?php echo $row['post_time']; ?></p>
+                <p>Price: <?php echo $row['price']; ?></p>
+                <p>State: <?php echo $row['state']; ?></p>
+                <p>Notes: <?php echo $row['notes']; ?></p>
+                <p>UserID: <?php echo $row['userID']; ?></p>
+                <p>Rental Type: <?php echo $row['rental_type']; ?></p>
+                <p>Location: <?php echo $row['location']; ?></p>
+                <p>Start Date: <?php echo $row['start_date']; ?></p>
+                <p>End Date: <?php echo $row['end_date']; ?></p>
+                <a href="#" class="btn btn-primary">view more</a>
+            </div>
+        </div>
+    <?php } ?>
+
+
+    <h1>Carpooling Posts</h1>
+    <?php while($row = $carpooling_result->fetch(PDO::FETCH_ASSOC)) { ?>
+        <div class="card" style="width: 18rem;">
+            <img src="placeholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                <p>Post Time: <?php echo $row['post_time']; ?></p>
+                <p>Price: <?php echo $row['price']; ?></p>
+                <p>State: <?php echo $row['state']; ?></p>
+                <p>Notes: <?php echo $row['notes']; ?></p>
+                <p>UserID: <?php echo $row['userID']; ?></p>
+                <p>Start Location: <?php echo $row['start_location']; ?></p>
+                <p>Destination: <?php echo $row['destination']; ?></p>
+                <p>Car Color: <?php echo $row['car_color']; ?></p>
+                <p>Model: <?php echo $row['car_model']; ?></p>
+                <p>License: <?php echo $row['car_license']; ?></p>
+                <p>Driver: <?php echo $row['driver']; ?></p>
+                <a href="#" class="btn btn-primary">view more</a>
+            </div>
+        </div>
+    <?php } ?>
+    <?php
+}
+?>
+
+
+
 
 </body>
 </html>
