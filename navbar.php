@@ -12,25 +12,25 @@
             <li class="nav-item nav-item_dec nav-item-custom active">
                 <a class="nav-link " href="index.php">  <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b>  <span class="sr-only"></span></a>
             </li>
-            <li class="nav-item nav-item_dec nav-item-custom">
+            <li class="nav-item nav-item_dec active">
                 <a class="nav-link" href="usedItem.php"><b>&nbsp;&nbsp;&nbsp;&nbsp;Used Item&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
 
 
-            <li class="nav-item">
-                <a class="nav-link" href="houseRental.php">&nbsp;House Rental&nbsp;</a>
+            <li class="nav-item nav-item_dec active">
+                <a class="nav-link" href="houseRental.php"><b>&nbsp;House Rental&nbsp;</b></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="carpooling.php">&nbsp;&nbsp;Carpooling&nbsp;&nbsp;</a>
+            <li class="nav-item nav-item_dec active">
+                <a class="nav-link" href="carpooling.php"><b>&nbsp;&nbsp;Carpooling&nbsp;&nbsp;</b></a>
 
             </li>
 
-            <li class="nav-item nav-item_dec nav-item-custom">
+            <li class="nav-item nav-item_dec active">
                 <a class="nav-link" href="#"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Account&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
 
-            <li class="nav-item nav-item_dec nav-item-custom">
+            <li class="nav-item nav-item_dec active">
                 <a class="nav-link" href="#"><b>&nbsp;&nbsp;&nbsp;&nbsp;Collection&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
         </ul>
