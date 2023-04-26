@@ -75,6 +75,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                     <p>Brand: <?php echo $row['brand']; ?></p>
                     <p>Used Time: <?php echo $row['used_time']; ?></p>
                     <a href="#" class="btn btn-primary">view more</a>
+                    <a href="#" class="btn btn-primary">Add to Collection</a>
                 </div>
             </div>
             <h1>House Rental Posts</h1>
@@ -93,6 +94,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <p>Start Date: <?php echo $row['start_date']; ?></p>
                         <p>End Date: <?php echo $row['end_date']; ?></p>
                         <a href="#" class="btn btn-primary">view more</a>
+                        <a href="#" class="btn btn-primary">Add to Collection</a>
                     </div>
                 </div>
             <?php } ?>
@@ -114,6 +116,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <p>License: <?php echo $row['car_license']; ?></p>
                         <p>Driver: <?php echo $row['driver']; ?></p>
                         <a href="#" class="btn btn-primary">view more</a>
+                        <a href="#" class="btn btn-primary">Add to Collection</a>
                     </div>
                 </div>
             <?php } ?>
@@ -138,6 +141,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Brand: <?php echo $row['brand']; ?></p>
                 <p>Used Time: <?php echo $row['used_time']; ?></p>
                 <a href="#" class="btn btn-primary">view more</a>
+                <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
     <?php } ?>
@@ -159,6 +163,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Start Date: <?php echo $row['start_date']; ?></p>
                 <p>End Date: <?php echo $row['end_date']; ?></p>
                 <a href="#" class="btn btn-primary">view more</a>
+                <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
     <?php } ?>
@@ -182,15 +187,13 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>License: <?php echo $row['car_license']; ?></p>
                 <p>Driver: <?php echo $row['driver']; ?></p>
                 <a href="#" class="btn btn-primary">view more</a>
+                <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
     <?php } ?>
     <?php
 }
 ?>
-
-
-
 
 </body>
 </html>
