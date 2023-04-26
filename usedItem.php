@@ -58,7 +58,9 @@
 </form>
 
 <h1> Used Item Posts </h1>
+<br>
 
+<div style="display: flex; flex-wrap: wrap;">
 <?php
     // Check if a search query has been submitted
     if (isset($_GET['query']) && !empty($_GET['query'])) {
@@ -70,6 +72,7 @@
     $result1 = $db->query($sql1);
     while ($row = $result1->fetch(PDO::FETCH_ASSOC)) {
     // Display the item using the same HTML structure as before?>
+<<<<<<< HEAD
     <div class="card" style="width: 18rem;">
         <img src="placeholder.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -87,11 +90,29 @@
                 <a href="#" class="btn btn-primary">view more</a>
                 <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
             </form>
+=======
+
+        <div class="card" style="width: 18rem;">
+            <img src="placeholder.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?php echo $row['name']; ?></h5>
+                <p>Post Time: <?php echo $row['post_time']; ?></p>
+                <p>Price: <?php echo $row['price']; ?></p>
+                <p>State: <?php echo $row['state']; ?></p>
+                <p>Notes: <?php echo $row['notes']; ?></p>
+                <p>UserID: <?php echo $row['userID']; ?></p>
+                <p>Item Type: <?php echo $row['item_type']; ?></p>
+                <p>Brand: <?php echo $row['brand']; ?></p>
+                <p>Used Time: <?php echo $row['used_time']; ?></p>
+                <a href="#" class="btn btn-primary">view more</a>
+            </div>
+>>>>>>> 818e148cdf922ae13466f38e095a2b48c1ef2e8f
         </div>
-    </div>
+
     <?php }
     }else{?>
         <?php while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) { ?>
+
         <div class="card" style="width: 18rem;">
             <img src="placeholder.jpg" class="card-img-top" alt="...">
             <div class="card-body">
@@ -111,8 +132,9 @@
                 </form>
             </div>
         </div>
+
     <?php } ?>
 <?php } ?>
-
+</div>
 </body>
 </html>
