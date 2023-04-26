@@ -18,11 +18,11 @@
 
 
             <li class="nav-item">
-                <a class="nav-link" href="houseRental.php">House Rental</a>
+                <a class="nav-link" href="houseRental.php">&nbsp;House Rental&nbsp;</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="carpooling.php">Carpooling</a>
+                <a class="nav-link" href="carpooling.php">&nbsp;&nbsp;Carpooling&nbsp;&nbsp;</a>
 
             </li>
 
