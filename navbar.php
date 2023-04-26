@@ -14,11 +14,11 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">House Rental</a>
+                <a class="nav-link" href="houseRental.php">House Rental</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Carpooling</a>
+                <a class="nav-link" href="carpooling.php">Carpooling</a>
             </li>
 
             <li class="nav-item">
