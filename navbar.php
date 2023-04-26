@@ -10,7 +10,7 @@
                 <a class="nav-link" href="index.php">Home <span class="sr-only"></span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Used Item</a>
+                <a class="nav-link" href="usedItem.php">Used Item</a>
             </li>
 
             <li class="nav-item">
