@@ -41,7 +41,7 @@
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!empty($_POST['loginbutton']) && ($_POST['loginbutton'] == "login")) {
             if(checkIfExist($_POST["email"])) {
-                if($password != $_POST["password"]) {
+                if($password != hash('sha256', $_POST["password"])) {
                     makeAlert("Wrong password, please try again!");
                 } else {
                     $userInfo = getUserInfo($_POST["email"]);

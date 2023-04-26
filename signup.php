@@ -24,8 +24,9 @@
         } else {
             $age = (int)$age;
         }
+        $hash_result = hash('sha256', $password);
         $query = "INSERT INTO User (password, gender, age, phone, email, bio, name, portrait) 
-          VALUES ('$password', '$gender', $age, '$phone', '$email', '$bio', '$name', '');";
+          VALUES ('$hash_result', '$gender', $age, '$phone', '$email', '$bio', '$name', '');";
         $statement = $db->prepare($query);
         $statement->execute();
     }
