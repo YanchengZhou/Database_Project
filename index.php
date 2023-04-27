@@ -22,6 +22,30 @@
     $carpooling_sql = "select * from Posts natural join Carpooling_post";
     $carpooling_result = $db->query($carpooling_sql);
 
+    function makeAlert($message) {
+        echo "<script>
+                        alert('$message')
+              </script>";
+    }
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(!empty($_POST['collectionbutton']) && ($_POST['collectionbutton'] == "collection")) {
+                if(isset($_SESSION["userID"]) && isset($_SESSION["email"]) && isset($_SESSION["name"])) {
+                    $collection_id = $_POST['collection_item'];
+                    $userId = $_SESSION["userID"];
+                    $query = "INSERT INTO Collection (userID, postID) VALUES (:userId, :postId)";
+                    $statement = $db->prepare($query);
+                    $statement->bindValue(':userId', $userId);
+                    $statement->bindValue(':postId', $collection_id);
+                    $statement->execute();
+                    makeAlert("Add to collection succesfully");
+                }
+                else {
+                    makeAlert("Please log in to add collections");
+                }
+
+            }
+    }
 
 ?>
 
@@ -77,8 +101,14 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                     <p>Used Time: <?php echo $row['used_time']; ?></p>
                     <a href="itemDetail.php" class="btn btn-primary">view more</a>
                     <a href="#" class="btn btn-primary">Add to Collection</a>
+                    <form method="post">
+                        <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                        <a href="#" class="btn btn-primary">view more</a>
+                        <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                    </form>
                 </div>
             </div>
+            <?php } ?>
         </div>
             <h1>House Rental Posts</h1>
             <?php while($row = $result2->fetch(PDO::FETCH_ASSOC)) { ?>
@@ -98,6 +128,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <p>End Date: <?php echo $row['end_date']; ?></p>
                         <a href="itemDetail.php" class="btn btn-primary">view more</a>
                         <a href="#" class="btn btn-primary">Add to Collection</a>
+                        <form method="post">
+                            <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                            <a href="#" class="btn btn-primary">view more</a>
+                            <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -122,12 +157,17 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <p>Driver: <?php echo $row['driver']; ?></p>
                         <a href="itemDetail.php" class="btn btn-primary">view more</a>
                         <a href="#" class="btn btn-primary">Add to Collection</a>
+                        <form method="post">
+                            <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                            <a href="#" class="btn btn-primary">view more</a>
+                            <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                        </form>
                     </div>
                 </div>
             </div>
             <?php } ?>
         <?php
-    }
+
 } else {
     // No search query has been submitted, so display all items as before
     ?>
@@ -149,6 +189,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                     <p>Used Time: <?php echo $row['used_time']; ?></p>
                     <a href="itemDetail.php" class="btn btn-primary">view more</a>
                     <a href="#" class="btn btn-primary">Add to Collection</a>
+                    <form method="post">
+                        <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                        <a href="#" class="btn btn-primary">view more</a>
+                        <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                    </form>
                 </div>
             </div>
         <?php } ?>
@@ -173,6 +218,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>End Date: <?php echo $row['end_date']; ?></p>
                 <a href="itemDetail.php" class="btn btn-primary">view more</a>
                 <a href="#" class="btn btn-primary">Add to Collection</a>
+                <form method="post">
+                    <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                    <a href="#" class="btn btn-primary">view more</a>
+                    <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                </form>
             </div>
         </div>
     <?php } ?>
@@ -199,6 +249,11 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Driver: <?php echo $row['driver']; ?></p>
                 <a href="itemDetail.php" class="btn btn-primary">view more</a>
                 <a href="#" class="btn btn-primary">Add to Collection</a>
+                <form method="post">
+                    <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
+                    <a href="#" class="btn btn-primary">view more</a>
+                    <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
+                </form>
             </div>
         </div>
     <?php } ?>

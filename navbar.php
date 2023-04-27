@@ -31,7 +31,7 @@
             </li>
 
             <li class="nav-item nav-item_dec active">
-                <a class="nav-link" href="#"><b>&nbsp;&nbsp;&nbsp;&nbsp;Collection&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
+                <a class="nav-link" href="collection.php"><b>&nbsp;&nbsp;&nbsp;&nbsp;Collection&nbsp;&nbsp;&nbsp;&nbsp;</b></a>
             </li>
         </ul>
 
@@ -39,7 +39,16 @@
 
     <li class="nav-item">
         <a href="upload.php"><button class="btn btn-primary ml-auto mr-2" type="button">Upload</button></a>
-        <a href="login.php"><button class="btn btn-primary ml-auto mr-2" type="button">Log In</button></a>
+        <?php
+            if(isset($_SESSION["userID"]) && isset($_SESSION["email"]) && isset($_SESSION["name"])) {
+                $current_file_name = basename($_SERVER['PHP_SELF']);
+                $getPath = "clearsession.php?return_url=" . $current_file_name;
+                echo "<a href='$getPath'><button name='logoutbutton' value='logout' class='btn btn-primary ml-auto mr-2' type='button'>Log Out</button></a>";
+            } else {
+                echo "<a href='login.php'><button class='btn btn-primary ml-auto mr-2' type='button'>Log In</button></a>";
+
+            }
+        ?>
         <a href="signup.php"><button class="btn btn-primary ml-auto mr-2" type="button">Sign Up</button></a>
     </li>
 </nav>
