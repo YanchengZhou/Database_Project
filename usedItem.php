@@ -57,7 +57,8 @@
                 <p>Item Type: <?php echo $row['item_type']; ?></p>
                 <p>Brand: <?php echo $row['brand']; ?></p>
                 <p>Used Time: <?php echo $row['used_time']; ?></p>
-                <a href="#" class="btn btn-primary">view more</a>
+                <a href="itemDetail.php" class="btn btn-primary">view more</a>
+                <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
 
@@ -77,7 +78,8 @@
                 <p>Item Type: <?php echo $row['item_type']; ?></p>
                 <p>Brand: <?php echo $row['brand']; ?></p>
                 <p>Used Time: <?php echo $row['used_time']; ?></p>
-                <a href="#" class="btn btn-primary">view more</a>
+                <a href="itemDetail.php" class="btn btn-primary">view more</a>
+                <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
 

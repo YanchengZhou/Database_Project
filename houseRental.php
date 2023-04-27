@@ -58,7 +58,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Location: <?php echo $row['location']; ?></p>
                 <p>Start Date: <?php echo $row['start_date']; ?></p>
                 <p>End Date: <?php echo $row['end_date']; ?></p>
-                <a href="#" class="btn btn-primary">view more</a>
+                <a href="itemDetail.php" class="btn btn-primary">view more</a>
                 <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
@@ -80,7 +80,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Location: <?php echo $row['location']; ?></p>
                 <p>Start Date: <?php echo $row['start_date']; ?></p>
                 <p>End Date: <?php echo $row['end_date']; ?></p>
-                <a href="#" class="btn btn-primary">view more</a>
+                <a href="itemDetail.php" class="btn btn-primary">view more</a>
                 <a href="#" class="btn btn-primary">Add to Collection</a>
             </div>
         </div>
