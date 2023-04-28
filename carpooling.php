@@ -88,7 +88,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Model: <?php echo $row['car_model']; ?></p>
                 <p>License: <?php echo $row['car_license']; ?></p>
                 <p>Driver: <?php echo $row['driver']; ?></p>
-                <a href="itemDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
+                <a href="carDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
                 <form method="post">
                     <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
                     <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
@@ -115,7 +115,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Model: <?php echo $row['car_model']; ?></p>
                 <p>License: <?php echo $row['car_license']; ?></p>
                 <p>Driver: <?php echo $row['driver']; ?></p>
-                <a href="itemDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
+                <a href="carDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
                 <form method="post">
                     <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
                     <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
