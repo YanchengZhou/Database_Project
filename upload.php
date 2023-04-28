@@ -1,5 +1,6 @@
 <?php
 require('connect-db.php');
+global $db;
 
 session_start();
 
@@ -17,7 +18,8 @@ function addPost($name, $post_time, $price, $state,$notes)
     $stmt->execute();
     $stmt->closeCursor();
 
-
+    $lastInsertedId = $db->lastInsertId();
+    return $lastInsertedId;
 }
 
 function addUsedItem($item_type, $brand, $used_time){
@@ -77,6 +79,8 @@ function addCarpooling($start_location, $destination, $car_color, $car_model, $c
 
 }
 
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(isset($_POST["name"])&&isset($_POST["time"])&&isset($_POST["price"])&&isset($_POST["state"])&&isset($_POST["note"])){
         $name = $_POST["name"];
@@ -84,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $price = $_POST["price"];
         $state = $_POST["state"];
         $note = $_POST["note"];
-        addPost($name, $time, $price, $state, $note);
+        $lastInsertedId = addPost($name, $time, $price, $state, $note);
         if(isset($_POST["itemType"])&&isset($_POST["brand"])&&isset($_POST["usedTime"])){
             $item_type = $_POST["itemType"];
             $brand = $_POST["brand"];
@@ -99,6 +103,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST["start_location"])&&isset($_POST["destination"])&&isset($_POST["car_color"])&&isset($_POST["car_model"])&&isset($_POST["car_license"])&&isset($_POST["driver"])){
             print("excuted carpooling");
             addCarpooling($_POST["start_location"], $_POST["destination"],$_POST["car_color"], $_POST["car_model"],$_POST["car_license"], $_POST["driver"]);
+        }
+        if (isset($_POST['Submit'])) {
+            $postId = (int)($lastInsertedId);
+
+            $image_name = basename($_FILES["uploaded_image"]["name"]);
+            $image_tmp_name = $_FILES["uploaded_image"]["tmp_name"];
+            $image_data = file_get_contents($image_tmp_name);
+
+            $sql = "INSERT INTO Picture (post_id, picture, image_data) VALUES (:postId, :image_name, :image_data)";
+            $stmt = $db->prepare($sql);
+            $stmt->bindParam(':postId', $postId);
+            $stmt->bindParam(':image_name', $image_name);
+            $stmt->bindParam(':image_data', $image_data, PDO::PARAM_LOB);
+            $stmt->execute();
         }
     }
 }
@@ -118,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form name="uploadForm" action = "upload.php" method = "post">
+            <form name="uploadForm" action = "upload.php" method = "post" enctype="multipart/form-data">
                 <h4>Upload Info</h4>
                 <div class="form-group">
                     <label for="name">Name</label>
@@ -146,8 +164,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--            <form>-->
                 <h4>Upload Image</h4>
                 <div class="form-group">
-                    <label for="image">Image</label>
-                    <input type="file" class="form-control-file" id="image">
+                    <label for="uploaded_image">Image</label>
+                    <input type="file" class="form-control-file" name="uploaded_image" id="uploaded_image">
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>

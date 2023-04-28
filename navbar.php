@@ -1,3 +1,29 @@
+<?php
+    function displayImageFromDatabase($postId) {
+        global $db;
+
+        $sql = "SELECT picture, image_data FROM Picture WHERE post_id = :postId";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':postId', $postId);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result) {
+            $image_name = $result['picture'];
+            $image_data = $result['image_data'];
+            $encoded_image = base64_encode($image_data);
+
+            // Determine mime type from image data
+            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            $mime_type = $finfo->buffer($image_data);
+
+            return "<img src='data:$mime_type;base64,$encoded_image' alt='Image from database'>";
+        } else {
+            return "<img src='placeholder.jpg' class='card-img-top' alt='No image found for post_id: $postId'>";
+        }
+    }
+?>
+
 <head>
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>

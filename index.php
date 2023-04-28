@@ -28,7 +28,8 @@
               </script>";
     }
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if(!empty($_POST['collectionbutton']) && ($_POST['collectionbutton'] == "collection")) {
                 if(isset($_SESSION["userID"]) && isset($_SESSION["email"]) && isset($_SESSION["name"])) {
                     $collection_id = $_POST['collection_item'];
@@ -88,7 +89,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
             ?>
         <div style="display: flex; flex-wrap: wrap;">
             <div class="card" style="width: 18rem;">
-                <img src="placeholder.jpg" class="card-img-top" alt="...">
+                <?php echo displayImageFromDatabase($row['id']); ?>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['name']; ?></h5>
                     <p>Post Time: <?php echo $row['post_time']; ?></p>
@@ -112,7 +113,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
             <?php while($row = $result2->fetch(PDO::FETCH_ASSOC)) { ?>
             <div style="display: flex; flex-wrap: wrap;">
                 <div class="card" style="width: 18rem;">
-                    <img src="placeholder.jpg" class="card-img-top" alt="...">
+                    <?php echo displayImageFromDatabase($row['id']); ?>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row['name']; ?></h5>
                         <p>Post Time: <?php echo $row['post_time']; ?></p>
@@ -137,7 +138,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
             <?php while($row = $result3->fetch(PDO::FETCH_ASSOC)) { ?>
             <div style="display: flex; flex-wrap: wrap;">
                 <div class="card" style="width: 18rem;">
-                    <img src="placeholder.jpg" class="card-img-top" alt="...">
+                    <?php echo displayImageFromDatabase($row['id']); ?>
                     <div class="card-body">
                         <h5 class="card-title"><?php echo $row['name']; ?></h5>
                         <p>Post Time: <?php echo $row['post_time']; ?></p>
@@ -170,7 +171,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
     <div style="display: flex; flex-wrap: wrap;">
         <?php while($row = $used_items_result->fetch(PDO::FETCH_ASSOC)) { ?>
             <div class="card" style="width: 18rem; margin: 10px;">
-                <img src="placeholder.jpg" class="card-img-top" alt="...">
+                <?php echo displayImageFromDatabase($row['id']); ?>
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $row['name']; ?></h5>
                     <p>Post Time: <?php echo $row['post_time']; ?></p>
@@ -196,7 +197,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
     <div style="display: flex; flex-wrap: wrap;">
     <?php while($row = $house_rentals_result->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="card" style="width: 18rem;">
-            <img src="placeholder.jpg" class="card-img-top" alt="...">
+            <?php echo displayImageFromDatabase($row['id']); ?>
             <div class="card-body">
                 <h5 class="card-title"><?php echo $row['name']; ?></h5>
                 <p>Post Time: <?php echo $row['post_time']; ?></p>
@@ -223,7 +224,7 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
     <div style="display: flex; flex-wrap: wrap;">
     <?php while($row = $carpooling_result->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="card" style="width: 18rem;">
-            <img src="placeholder.jpg" class="card-img-top" alt="...">
+            <?php echo displayImageFromDatabase($row['id']); ?>
             <div class="card-body">
                 <h5 class="card-title"><?php echo $row['name']; ?></h5>
                 <p>Post Time: <?php echo $row['post_time']; ?></p>
