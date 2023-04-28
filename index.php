@@ -100,10 +100,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                     <p>Brand: <?php echo $row['brand']; ?></p>
                     <p>Used Time: <?php echo $row['used_time']; ?></p>
                     <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                    <a href="#" class="btn btn-primary">Add to Collection</a>
                     <form method="post">
                         <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                        <a href="#" class="btn btn-primary">view more</a>
                         <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                     </form>
                 </div>
@@ -127,10 +125,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <p>Start Date: <?php echo $row['start_date']; ?></p>
                         <p>End Date: <?php echo $row['end_date']; ?></p>
                         <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                        <a href="#" class="btn btn-primary">Add to Collection</a>
                         <form method="post">
                             <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                            <a href="#" class="btn btn-primary">view more</a>
                             <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                         </form>
                     </div>
@@ -156,10 +152,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                         <p>License: <?php echo $row['car_license']; ?></p>
                         <p>Driver: <?php echo $row['driver']; ?></p>
                         <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                        <a href="#" class="btn btn-primary">Add to Collection</a>
                         <form method="post">
                             <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                            <a href="#" class="btn btn-primary">view more</a>
                             <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                         </form>
                     </div>
@@ -188,10 +182,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                     <p>Brand: <?php echo $row['brand']; ?></p>
                     <p>Used Time: <?php echo $row['used_time']; ?></p>
                     <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                    <a href="#" class="btn btn-primary">Add to Collection</a>
                     <form method="post">
                         <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                        <a href="#" class="btn btn-primary">view more</a>
                         <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                     </form>
                 </div>
@@ -217,10 +209,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Start Date: <?php echo $row['start_date']; ?></p>
                 <p>End Date: <?php echo $row['end_date']; ?></p>
                 <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
                 <form method="post">
                     <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                    <a href="#" class="btn btn-primary">view more</a>
                     <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                 </form>
             </div>
@@ -248,10 +238,8 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>License: <?php echo $row['car_license']; ?></p>
                 <p>Driver: <?php echo $row['driver']; ?></p>
                 <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
                 <form method="post">
                     <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                    <a href="#" class="btn btn-primary">view more</a>
                     <button type="submit" name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                 </form>
             </div>

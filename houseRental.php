@@ -52,7 +52,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 <?php include 'navbar.php'; ?>
 
-<form action="index.php" method="get">
+<form action="houseRental.php" method="get">
     <input type="text" name="query" placeholder="Search...">
     <button type="submit">Search</button>
 </form>
@@ -86,11 +86,9 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Location: <?php echo $row['location']; ?></p>
                 <p>Start Date: <?php echo $row['start_date']; ?></p>
                 <p>End Date: <?php echo $row['end_date']; ?></p>
-                <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
+                <a href="itemDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
                 <form method="post">
                     <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                    <a href="#" class="btn btn-primary">view more</a>
                     <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                 </form>
             </div>
@@ -113,11 +111,9 @@ if (isset($_GET['query']) && !empty($_GET['query'])) {
                 <p>Location: <?php echo $row['location']; ?></p>
                 <p>Start Date: <?php echo $row['start_date']; ?></p>
                 <p>End Date: <?php echo $row['end_date']; ?></p>
-                <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
+                <a href="itemDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
                 <form method="post">
                     <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                    <a href="#" class="btn btn-primary">view more</a>
                     <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                 </form>
             </div>

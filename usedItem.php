@@ -52,7 +52,7 @@
 <body>
 <?php include 'navbar.php'; ?>
 
-<form action="index.php" method="get">
+<form action="usedItem.php" method="get">
     <input type="text" name="query" placeholder="Search...">
     <button type="submit">Search</button>
 </form>
@@ -84,9 +84,9 @@
             <p>Item Type: <?php echo $row['item_type']; ?></p>
             <p>Brand: <?php echo $row['brand']; ?></p>
             <p>Used Time: <?php echo $row['used_time']; ?></p>
+            <a href="itemDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
             <form method="post">
                 <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                <a href="#" class="btn btn-primary">view more</a>
                 <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
             </form>
         </div>
@@ -107,11 +107,9 @@
                 <p>Item Type: <?php echo $row['item_type']; ?></p>
                 <p>Brand: <?php echo $row['brand']; ?></p>
                 <p>Used Time: <?php echo $row['used_time']; ?></p>
-                <a href="itemDetail.php" class="btn btn-primary">view more</a>
-                <a href="#" class="btn btn-primary">Add to Collection</a>
+                <a href="itemDetail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">view more</a>
                 <form method="post">
                     <input type="hidden" name="collection_item" value="<?php echo $row['id'] ?>">
-                    <a href="#" class="btn btn-primary">view more</a>
                     <button name="collectionbutton" value="collection" class="btn btn-primary">Add to Collection</button>
                 </form>
             </div>
