@@ -19,6 +19,7 @@ function getComments($itemId){
             . " email: ". $_SESSION["email"];
         $userId = $_SESSION["userID"];
     } else {
+        $userID = null;
         echo "You have not logged in";
     }
 
@@ -54,9 +55,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insertStmt->execute();
             $insertStmt->closeCursor();
         }
+    }else if(!empty($_POST['submit'])&&$_POST['submit'] == "Delete"){
+            $comment_to_delete = $_POST['comment_to_delete'];
+            $query = "delete from Comment where userID = :comment_to_delete";
+            $stmt = $db->prepare($query);
+            $stmt->bindParam('comment_to_delete', $comment_to_delete);
+            $stmt->execute();
+            $stmt->closeCursor();
     }else{
         echo "<script>alert('Nothing is entered');</script>";
     }
+
+    $comments = getComments($itemId);
 }
 
 ?>
@@ -104,6 +114,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <h4><?php echo $comment['name'];?></h4>
                         <small><?php echo $comment['comment_time']; ?></small>
                         <p><?php echo $comment['content']?></p>
+                        <?php
+                        // Check if the comment was posted by the current user
+                        if ($comment['userID'] == $userId) { ?>
+                            <form action="itemDetail.php?id=<?php echo $itemId; ?>" method = "post">
+                                <input type="submit" name="submit" value="Delete"/>
+                                <input type="hidden" name="comment_to_delete"
+                                       value="<?php echo $comment['userID']; ?>" />
+                            </form>
+<!--                            echo "<button>Delete</button>";-->
+                        <?php }
+                        ?>
                     </li>
                 <?php endforeach;
             }
